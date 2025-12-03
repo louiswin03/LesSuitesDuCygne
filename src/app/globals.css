@@ -1,26 +1,40 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 67, 62, 55; /* Notre Marron Glacé */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: #433E37;
+  background-color: #F9F8F6; /* Fond crème */
+  /* Lissage des polices pour un effet plus net/pro */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Effet de transition douce sur les boutons */
+.btn-gold {
+    @apply bg-cygne-gold text-white px-8 py-3 uppercase tracking-[0.15em] text-xs font-bold transition-all duration-500 hover:bg-cygne-brown hover:tracking-[0.25em];
+}
+
+.btn-outline {
+    @apply border border-cygne-brown text-cygne-brown px-8 py-3 uppercase tracking-[0.15em] text-xs font-bold transition-all duration-500 hover:bg-cygne-brown hover:text-white;
+}
+
+/* Animations d'apparition */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1.2s ease-out forwards;
 }
