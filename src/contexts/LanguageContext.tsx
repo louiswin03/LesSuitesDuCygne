@@ -1,7 +1,6 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import frTranslations from '@/translations/fr.json';
 
 type Language = 'fr' | 'en';
 
@@ -15,36 +14,45 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('fr');
-  const [translations, setTranslations] = useState<any>(frTranslations);
-  const [isLoading, setIsLoading] = useState(false);
+  const [translations, setTranslations] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [minLoadingDone, setMinLoadingDone] = useState(false);
 
   useEffect(() => {
     // Load saved language from localStorage
     const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && savedLanguage !== 'fr') {
+    if (savedLanguage) {
       setLanguageState(savedLanguage);
     }
+
+    // Délai minimum de 300ms pour l'écran de chargement
+    const minLoadingTimer = setTimeout(() => {
+      setMinLoadingDone(true);
+    }, 300);
+
+    return () => clearTimeout(minLoadingTimer);
   }, []);
 
   useEffect(() => {
-    // French is preloaded, only load other languages dynamically
-    if (language === 'fr') {
-      setTranslations(frTranslations);
-      setIsLoading(false);
-      return;
-    }
-
-    // Load other languages dynamically
+    // Load translations for current language
     setIsLoading(true);
+    setMinLoadingDone(false);
+
+    const minLoadingTimer = setTimeout(() => {
+      setMinLoadingDone(true);
+    }, 300);
+
     import(`@/translations/${language}.json`)
       .then((module) => {
         setTranslations(module.default);
         setIsLoading(false);
       })
       .catch(() => {
-        setTranslations(frTranslations);
+        setTranslations({});
         setIsLoading(false);
       });
+
+    return () => clearTimeout(minLoadingTimer);
   }, [language]);
 
   const setLanguage = (lang: Language) => {
@@ -64,11 +72,23 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return value || key;
   };
 
-  // Ne pas afficher le contenu tant que les traductions ne sont pas chargées
-  if (isLoading || !translations) {
+  // Ne pas afficher le contenu tant que les traductions ne sont pas chargées ET que le délai minimum n'est pas écoulé
+  if (!translations || isLoading || !minLoadingDone) {
     return (
-      <div className="fixed inset-0 bg-cygne-cream flex items-center justify-center">
-        <div className="text-cygne-brown text-lg">Chargement...</div>
+      <div className="fixed inset-0 bg-cygne-cream flex items-center justify-center z-[10000]">
+        <div className="flex flex-col items-center gap-8">
+          {/* Spinners concentriques animés */}
+          <div className="relative w-24 h-24">
+            {/* Cercle extérieur */}
+            <div className="absolute inset-0 border-4 border-cygne-brown/20 border-t-cygne-gold rounded-full animate-spin"></div>
+            {/* Cercle intérieur - rotation inverse */}
+            <div className="absolute inset-3 border-4 border-cygne-gold/20 border-b-cygne-brown rounded-full animate-spin" style={{ animationDirection: 'reverse', animationDuration: '1s' }}></div>
+            {/* Point central */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-3 h-3 bg-cygne-gold rounded-full animate-pulse"></div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
