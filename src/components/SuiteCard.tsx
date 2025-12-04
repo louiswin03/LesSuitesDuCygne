@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { Users, MoveDiagonal, Check, Expand } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import ImageLightbox from './ImageLightbox';
+import Carousel from './Carousel';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface SuiteCardProps {
     suite: {
@@ -22,6 +24,7 @@ interface SuiteCardProps {
 }
 
 export default function SuiteCard({ suite }: SuiteCardProps) {
+  const { t } = useLanguage();
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -33,22 +36,32 @@ export default function SuiteCard({ suite }: SuiteCardProps) {
   }));
   return (
     <div className="group flex flex-col bg-white border border-stone-100 hover:border-cygne-gold/30 transition-all duration-500 hover:shadow-lg rounded-sm overflow-hidden h-full">
-      {/* Zone Image */}
-      <div
-        className="h-72 bg-stone-200 w-full relative overflow-hidden cursor-pointer"
-        onClick={() => setIsLightboxOpen(true)}
-      >
-         <Image
-            src={suite.image}
-            alt={suite.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-700"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-         />
-         {/* Icône d'agrandissement au survol */}
-         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-            <Expand className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={32} />
-         </div>
+      {/* Zone Carrousel */}
+      <div className="h-72 bg-stone-200 w-full overflow-hidden">
+         {imageArray.length > 1 ? (
+           <Carousel
+             images={imageArray}
+             autoplay={true}
+             interval={6000}
+             aspectRatio="h-72"
+           />
+         ) : (
+           <div
+             className="h-72 w-full relative overflow-hidden cursor-pointer"
+             onClick={() => setIsLightboxOpen(true)}
+           >
+             <Image
+               src={suite.image}
+               alt={suite.name}
+               fill
+               className="object-cover group-hover:scale-105 transition-transform duration-700"
+               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+             />
+             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+               <Expand className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={32} />
+             </div>
+           </div>
+         )}
       </div>
 
       {/* Lightbox */}
@@ -93,11 +106,11 @@ export default function SuiteCard({ suite }: SuiteCardProps) {
             </ul>
         </div>
 
-        <Link 
-          href="/reservation" 
+        <Link
+          href="/reservation"
           className="btn-outline w-full block text-center mx-auto"
         >
-          Voir les disponibilités
+          {t('apartments.seeAvailability')}
         </Link>
       </div>
     </div>

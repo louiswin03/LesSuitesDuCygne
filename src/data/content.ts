@@ -20,8 +20,8 @@ export const siteConfig = {
       surface: "65 m²",
       features: ["1 Chambre double", "Canapé-lit confort", "Climatisation", "Cuisine équipée", "Douche à l'italienne"],
       image: "/images/baudelaire.jpg",
-      // Pour ajouter plusieurs images : décommentez et ajoutez vos images
-      // images: ["/images/baudelaire.jpg", "/images/baudelaire-2.jpg", "/images/baudelaire-3.jpg"]
+      images: ["/images/baudelaire.jpg","/images/baudelaire2.jpg","/images/baudelaire3.jpg","/images/baudelaire4.jpg","/images/baudelaire5.jpg"]
+      // Ajoutez plus d'images ici : ["/images/baudelaire.jpg", "/images/baudelaire-2.jpg", "/images/baudelaire-3.jpg"]
     },
     {
       id: "schubert",
@@ -32,7 +32,8 @@ export const siteConfig = {
       surface: "75 m²",
       features: ["2 Chambres", "Grand Salon", "Insonorisation", "Lave-linge / Sèche-linge", "Vue Ville"],
       image: "/images/schubert.jpg",
-      // images: ["/images/schubert.jpg", "/images/schubert-2.jpg", "/images/schubert-3.jpg"]
+      images: ["/images/schubert.jpg"]
+      // Ajoutez plus d'images ici
     },
     {
       id: "asselin",
@@ -42,8 +43,9 @@ export const siteConfig = {
       capacity: "6 à 10 personnes",
       surface: "115 m²",
       features: ["3 Grandes Chambres", "2 Salles de bain", "Espace repas XXL", "Coin lecture", "Tout équipé"],
-      image: "/images/asselin.jpg",
-      // images: ["/images/asselin.jpg", "/images/asselin-2.jpg", "/images/asselin-3.jpg"]
+      image: "/images/asselin1.jpg",
+      images: ["/images/asselin1.jpg"]
+      // Ajoutez plus d'images ici
     },
   ];
   

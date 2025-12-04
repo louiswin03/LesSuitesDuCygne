@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "apartments": "Appartements",
+    "place": "Le Lieu",
+    "addresses": "Colmar",
+    "book": "Réserver"
+  },
+  "home": {
+    "location": "Colmar — Alsace",
+    "title": "Les Suites du Cygne",
+    "subtitle": "L'art de vivre à l'alsacienne, revisité dans une atmosphère contemporaine et chaleureuse.",
+    "cta": "Découvrir nos suites",
+    "ctaReservation": "Réservez dès maintenant votre séjour dans nos suites d'exception au cœur de Colmar",
+    "ctaButton": "Réserver maintenant",
+    "locationTitle": "Notre Emplacement",
+    "locationSubtitle": "Au cœur de Colmar",
+    "locationCaption": "À quelques pas de la Petite Venise et du centre historique",
+    "philosophyLabel": "Notre Philosophie",
+    "philosophyTitle": "Une maison de famille, une âme d'artiste.",
+    "philosophyText": "Nichée aux portes de la vieille ville, notre demeure alsacienne a été entièrement repensée pour vous offrir un refuge de sérénité. Loin des hébergements standardisés, nous vous proposons de véritables espaces de vie (jusqu'à 115m²), où le charme de l'ancien côtoie le confort absolu.",
+    "philosophyLink": "En savoir plus sur la maison",
+    "suitesTitle": "Nos Suites",
+    "suitesText": "De la poésie de la suite Baudelaire à la grandeur de la suite Asselin. Des espaces uniques pour 2 à 10 personnes.",
+    "suitesLink": "Voir les appartements",
+    "mapLabel": "Localisation",
+    "mapTitle": "Comment nous trouver",
+    "mapAddress": "20-22 Rue des Boulangers, 68000 Colmar",
+    "mapSubtitle": "À quelques minutes à pied du centre historique"
+  },
+  "apartments": {
+    "title": "Nos Appartements",
+    "subtitle": "Confort moderne & Charme Alsacien",
+    "servicesTitle": "Services inclus",
+    "servicesText": "Wifi haut débit, Climatisation, Linge de maison fourni.",
+    "capacity": "Capacité",
+    "surface": "Surface",
+    "seeAvailability": "Voir les disponibilités"
+  },
+  "info": {
+    "title": "Infos & Accès",
+    "subtitle": "Toutes les informations pratiques",
+    "contactTitle": "Nous contacter",
+    "phone": "Téléphone",
+    "mobile": "Mobile",
+    "clientRelations": "Relations Clients",
+    "administration": "Administration",
+    "addressTitle": "Adresse & Accès",
+    "addressNote1": "Les suites sont au n° 20, mais",
+    "addressNote1Bold": "l'entrée se fait par le 22",
+    "addressNote1End": "(juste à droite de la pharmacie)",
+    "addressNote2": "La zone est piétonne",
+    "addressNote3": "Situé à seulement 1 km de la gare de Colmar",
+    "checkinTitle": "Check-in",
+    "checkinTime": "À partir de 17h",
+    "checkinNote1": "Accès via digicode et boîte à clé",
+    "checkinNote2": "Check-in téléphonique obligatoire",
+    "checkinNote2End": "avant votre arrivée",
+    "checkinNote3": "Si vos horaires d'arrivée ne sont pas entre 17h et 21h, contactez-nous pour organiser votre accès",
+    "checkoutTitle": "Check-out",
+    "checkoutTime": "Jusqu'à 12h"
+  },
+  "addresses": {
+    "title": "Bonnes Adresses",
+    "subtitle": "Nos coups de cœur à Colmar"
+  },
+  "reservation": {
+    "title": "Réserver",
+    "subtitle": "Meilleur tarif garanti en direct",
+    "heading": "Votre séjour commence ici",
+    "text": "Pour toute demande, privilégiez le contact direct. Nous vous répondons sous 24h.",
+    "emailBtn": "Par Email",
+    "phoneBtn": "+33 (0)6 45 32 18 61"
+  },
+  "footer": {
+    "description": "Une invitation à la douceur de vivre alsacienne, dans un cadre authentique et raffiné.",
+    "navigation": "Navigation",
+    "ourApartments": "Nos Appartements",
+    "placeAccess": "Le Lieu & Accès",
+    "discoverColmar": "Découvrir Colmar",
+    "book": "Réserver",
+    "contact": "Contact"
+  }
+}

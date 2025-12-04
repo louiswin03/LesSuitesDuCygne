@@ -1,34 +1,64 @@
+'use client';
+
 import { siteConfig } from '@/data/content';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-cygne-brown text-cygne-cream pt-20 pb-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-16">
-        
+
         {/* Marque */}
         <div className="space-y-6">
-            <h3 className="text-3xl font-serif text-white">{siteConfig.name}</h3>
-            <p className="text-sm leading-loose opacity-80 max-w-xs font-light">
-                Une invitation à la douceur de vivre alsacienne, dans un cadre authentique et raffiné.
+            <Link
+              href="/"
+              className="block mb-4 w-56 hover:opacity-90 transition-opacity duration-300"
+            >
+              <img
+                src="/images/file.svg"
+                alt="Les Suites du Cygne"
+                className="w-full h-auto transition-all duration-300"
+                style={{
+                  maxHeight: '150px',
+                  filter: 'invert(91%) sepia(12%) saturate(410%) hue-rotate(357deg) brightness(98%) contrast(90%)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.filter = 'invert(77%) sepia(13%) saturate(629%) hue-rotate(358deg) brightness(92%) contrast(87%)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.filter = 'invert(91%) sepia(12%) saturate(410%) hue-rotate(357deg) brightness(98%) contrast(90%)';
+                }}
+              />
+            </Link>
+            <p className="text-sm leading-loose opacity-80 max-w-xs font-light mb-6">
+                {t('footer.description')}
             </p>
+            <Link
+              href="/reservation"
+              className="inline-block px-6 py-3 bg-cygne-gold text-white uppercase tracking-[0.15em] text-xs font-bold hover:bg-white hover:text-cygne-brown transition-all duration-300 rounded-sm"
+            >
+              {t('footer.book')}
+            </Link>
         </div>
 
         {/* Navigation */}
         <div>
-            <h4 className="text-cygne-gold text-xs uppercase tracking-[0.2em] font-bold mb-8">Navigation</h4>
+            <h4 className="text-cygne-gold text-xs uppercase tracking-[0.2em] font-bold mb-8">{t('footer.navigation')}</h4>
             <ul className="space-y-4 text-sm font-light">
-                <li><Link href="/appartements" className="hover:text-cygne-gold transition-colors">Nos Appartements</Link></li>
-                <li><Link href="/infos" className="hover:text-cygne-gold transition-colors">Le Lieu & Accès</Link></li>
-                <li><Link href="/adresses" className="hover:text-cygne-gold transition-colors">Découvrir Colmar</Link></li>
-                <li><Link href="/reservation" className="hover:text-cygne-gold transition-colors">Réserver</Link></li>
+                <li><Link href="/appartements" className="hover:text-cygne-gold transition-colors">{t('footer.ourApartments')}</Link></li>
+                <li><Link href="/infos" className="hover:text-cygne-gold transition-colors">{t('footer.placeAccess')}</Link></li>
+                <li><Link href="/adresses" className="hover:text-cygne-gold transition-colors">{t('footer.discoverColmar')}</Link></li>
+                
             </ul>
         </div>
 
         {/* Contact */}
         <div>
-            <h4 className="text-cygne-gold text-xs uppercase tracking-[0.2em] font-bold mb-8">Contact</h4>
+            <h4 className="text-cygne-gold text-xs uppercase tracking-[0.2em] font-bold mb-8">{t('footer.contact')}</h4>
             <div className="space-y-4 text-sm font-light">
                 <a href={`tel:${siteConfig.contact.mobile}`} className="flex items-center gap-3 hover:text-cygne-gold transition-colors">
                     <Phone size={16} className="text-cygne-gold" />

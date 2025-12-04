@@ -2,29 +2,36 @@
 
 import { motion } from 'framer-motion';
 import { bonnesAdresses } from '@/data/content';
+import { bonnesAdressesEn } from '@/data/content-en';
 import { ExternalLink, Utensils, Coffee, ShoppingBag, Store, Wrench } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const categoryIcons: { [key: string]: any } = {
   "Restaurants": Utensils,
   "Bars": Coffee,
   "Spécialités": Store,
+  "Specialties": Store,
   "Shopping": ShoppingBag,
   "Utile et pratique": Wrench,
+  "Useful & Practical": Wrench,
 };
 
 export default function AdressesPage() {
+  const { t, language } = useLanguage();
+  const currentAdresses = language === 'en' ? bonnesAdressesEn : bonnesAdresses;
+
   return (
     <div className="bg-cygne-cream min-h-screen">
       <div className="pt-40 pb-12 px-6 text-center">
-            <h1 className="text-5xl font-serif mb-4 text-cygne-brown">Bonnes Adresses</h1>
+            <h1 className="text-5xl font-serif mb-4 text-cygne-brown">{t('addresses.title')}</h1>
             <p className="text-cygne-brown uppercase tracking-[0.2em] text-xs font-bold opacity-70">
-                Nos coups de cœur à Colmar
+                {t('addresses.subtitle')}
             </p>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="space-y-16">
-            {bonnesAdresses.map((category, idx) => {
+            {currentAdresses.map((category, idx) => {
               const Icon = categoryIcons[category.category];
               return (
                 <motion.div

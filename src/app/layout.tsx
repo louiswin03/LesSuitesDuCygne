@@ -3,6 +3,7 @@ import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 // Configuration des polices "Pro"
 const playfair = Playfair_Display({ 
@@ -29,11 +30,13 @@ export default function RootLayout({
   return (
     <html lang="fr" className="overflow-x-hidden">
       <body className={`${playfair.variable} ${lato.variable} font-sans antialiased bg-stone-50 overflow-x-hidden`}>
-        <Navbar />
-        <main className="min-h-screen overflow-x-hidden">
-            {children}
-        </main>
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main className="min-h-screen overflow-x-hidden">
+              {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

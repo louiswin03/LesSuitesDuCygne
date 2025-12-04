@@ -4,14 +4,17 @@ import { motion } from 'framer-motion';
 import Map from '@/components/Map';
 import { siteConfig } from '@/data/content';
 import { Phone, Mail, MapPin, Clock, KeyRound, Info, Train } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function InfosPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="bg-cygne-cream min-h-screen">
        <div className="pt-40 pb-12 px-6 text-center">
-            <h1 className="text-5xl font-serif mb-4 text-cygne-brown">Infos & Accès</h1>
+            <h1 className="text-5xl font-serif mb-4 text-cygne-brown">{t('info.title')}</h1>
             <p className="text-cygne-brown uppercase tracking-[0.2em] text-xs font-bold opacity-70">
-                Toutes les informations pratiques
+                {t('info.subtitle')}
             </p>
       </div>
 
@@ -23,13 +26,13 @@ export default function InfosPage() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-serif text-cygne-brown mb-8 text-center">Nous contacter</h2>
+          <h2 className="text-3xl font-serif text-cygne-brown mb-8 text-center">{t('info.contactTitle')}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Téléphone fixe */}
             <a href={`tel:${siteConfig.contact.phone}`} className="flex flex-col items-center gap-3 p-6 bg-white rounded-sm shadow-sm border border-stone-100 hover:border-cygne-gold hover:shadow-md transition">
               <Phone className="text-cygne-gold" size={24} />
               <div className="text-center">
-                <span className="block text-xs uppercase tracking-wider text-cygne-brown/50 mb-2">Téléphone</span>
+                <span className="block text-xs uppercase tracking-wider text-cygne-brown/50 mb-2">{t('info.phone')}</span>
                 <p className="text-cygne-brown font-medium text-sm">{siteConfig.contact.phone}</p>
               </div>
             </a>
@@ -38,7 +41,7 @@ export default function InfosPage() {
             <a href={`tel:${siteConfig.contact.mobile}`} className="flex flex-col items-center gap-3 p-6 bg-white rounded-sm shadow-sm border border-stone-100 hover:border-cygne-gold hover:shadow-md transition">
               <Phone className="text-cygne-gold" size={24} />
               <div className="text-center">
-                <span className="block text-xs uppercase tracking-wider text-cygne-brown/50 mb-2">Mobile</span>
+                <span className="block text-xs uppercase tracking-wider text-cygne-brown/50 mb-2">{t('info.mobile')}</span>
                 <p className="text-cygne-brown font-medium text-sm">{siteConfig.contact.mobile}</p>
               </div>
             </a>
@@ -47,7 +50,7 @@ export default function InfosPage() {
             <a href={`mailto:${siteConfig.contact.emailClient}`} className="flex flex-col items-center gap-3 p-6 bg-white rounded-sm shadow-sm border border-stone-100 hover:border-cygne-gold hover:shadow-md transition">
               <Mail className="text-cygne-gold" size={24} />
               <div className="text-center">
-                <span className="block text-xs uppercase tracking-wider text-cygne-brown/50 mb-2">Relations Clients</span>
+                <span className="block text-xs uppercase tracking-wider text-cygne-brown/50 mb-2">{t('info.clientRelations')}</span>
                 <p className="text-cygne-brown font-medium text-sm break-all">{siteConfig.contact.emailClient}</p>
               </div>
             </a>
@@ -56,7 +59,7 @@ export default function InfosPage() {
             <a href={`mailto:${siteConfig.contact.emailAdmin}`} className="flex flex-col items-center gap-3 p-6 bg-white rounded-sm shadow-sm border border-stone-100 hover:border-cygne-gold hover:shadow-md transition">
               <Mail className="text-cygne-gold" size={24} />
               <div className="text-center">
-                <span className="block text-xs uppercase tracking-wider text-cygne-brown/50 mb-2">Administration</span>
+                <span className="block text-xs uppercase tracking-wider text-cygne-brown/50 mb-2">{t('info.administration')}</span>
                 <p className="text-cygne-brown font-medium text-sm break-all">{siteConfig.contact.emailAdmin}</p>
               </div>
             </a>
@@ -77,14 +80,14 @@ export default function InfosPage() {
               <div className="flex items-start gap-4 mb-6">
                 <MapPin className="text-cygne-gold shrink-0 mt-1" size={24} />
                 <div>
-                  <h3 className="text-xl font-serif text-cygne-brown mb-3">Adresse & Accès</h3>
+                  <h3 className="text-xl font-serif text-cygne-brown mb-3">{t('info.addressTitle')}</h3>
                   <p className="text-cygne-brown font-medium mb-3">{siteConfig.contact.address}</p>
                   <div className="space-y-2 text-sm text-cygne-brown/70 leading-relaxed">
-                    <p>• Les suites sont au n° 20, mais <strong className="text-cygne-brown">l'entrée se fait par le 22</strong> (juste à droite de la pharmacie)</p>
-                    <p>• La zone est piétonne</p>
+                    <p>• {t('info.addressNote1')} <strong className="text-cygne-brown">{t('info.addressNote1Bold')}</strong> {t('info.addressNote1End')}</p>
+                    <p>• {t('info.addressNote2')}</p>
                     <p className="flex items-center gap-2">
                       <Train size={16} className="text-cygne-gold" />
-                      Situé à seulement 1 km de la gare de Colmar
+                      {t('info.addressNote3')}
                     </p>
                   </div>
                 </div>
@@ -96,17 +99,17 @@ export default function InfosPage() {
               <div className="flex items-start gap-4">
                 <KeyRound className="text-cygne-gold shrink-0 mt-1" size={24} />
                 <div>
-                  <h3 className="text-xl font-serif text-cygne-brown mb-4">Check-in</h3>
+                  <h3 className="text-xl font-serif text-cygne-brown mb-4">{t('info.checkinTitle')}</h3>
                   <div className="space-y-3 text-sm text-cygne-brown/70 leading-relaxed">
                     <p className="font-medium text-cygne-brown">
                       <Clock className="inline mr-2" size={16} />
-                      À partir de 17h
+                      {t('info.checkinTime')}
                     </p>
-                    <p>• Accès via digicode et boîte à clé</p>
+                    <p>• {t('info.checkinNote1')}</p>
                     <p className="bg-cygne-gold/10 p-3 rounded-sm border-l-4 border-cygne-gold">
-                      <strong className="text-cygne-brown">Check-in téléphonique obligatoire</strong> avant votre arrivée
+                      <strong className="text-cygne-brown">{t('info.checkinNote2')}</strong> {t('info.checkinNote2End')}
                     </p>
-                    <p>• Si vos horaires d'arrivée ne sont pas entre 17h et 21h, contactez-nous pour organiser votre accès</p>
+                    <p>• {t('info.checkinNote3')}</p>
                   </div>
                 </div>
               </div>
@@ -117,8 +120,8 @@ export default function InfosPage() {
               <div className="flex items-start gap-4">
                 <Clock className="text-cygne-gold shrink-0 mt-1" size={24} />
                 <div>
-                  <h3 className="text-xl font-serif text-cygne-brown mb-3">Check-out</h3>
-                  <p className="text-cygne-brown font-medium">Jusqu'à 12h</p>
+                  <h3 className="text-xl font-serif text-cygne-brown mb-3">{t('info.checkoutTitle')}</h3>
+                  <p className="text-cygne-brown font-medium">{t('info.checkoutTime')}</p>
                 </div>
               </div>
             </div>

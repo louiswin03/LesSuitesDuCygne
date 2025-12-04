@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "apartments": "Apartments",
+    "place": "The Place",
+    "addresses": "Colmar",
+    "book": "Book"
+  },
+  "home": {
+    "location": "Colmar — Alsace",
+    "title": "Les Suites du Cygne",
+    "subtitle": "The art of Alsatian living, reimagined in a contemporary and warm atmosphere.",
+    "cta": "Discover our suites",
+    "ctaReservation": "Book now your stay in our exceptional suites in the heart of Colmar",
+    "ctaButton": "Book now",
+    "locationTitle": "Our Location",
+    "locationSubtitle": "In the heart of Colmar",
+    "locationCaption": "A few steps from Little Venice and the historic center",
+    "philosophyLabel": "Our Philosophy",
+    "philosophyTitle": "A family home, an artist's soul.",
+    "philosophyText": "Nestled at the gates of the old town, our Alsatian residence has been completely redesigned to offer you a haven of serenity. Far from standardized accommodation, we offer you genuine living spaces (up to 115m²), where old-world charm meets absolute comfort.",
+    "philosophyLink": "Learn more about the house",
+    "suitesTitle": "Our Suites",
+    "suitesText": "From the poetry of the Baudelaire suite to the grandeur of the Asselin suite. Unique spaces for 2 to 10 people.",
+    "suitesLink": "View apartments",
+    "mapLabel": "Location",
+    "mapTitle": "How to find us",
+    "mapAddress": "20-22 Rue des Boulangers, 68000 Colmar",
+    "mapSubtitle": "A few minutes walk from the historic center"
+  },
+  "apartments": {
+    "title": "Our Apartments",
+    "subtitle": "Modern Comfort & Alsatian Charm",
+    "servicesTitle": "Included Services",
+    "servicesText": "High-speed WiFi, Air conditioning, Linens provided.",
+    "capacity": "Capacity",
+    "surface": "Surface",
+    "seeAvailability": "Check availability"
+  },
+  "info": {
+    "title": "Info & Access",
+    "subtitle": "All practical information",
+    "contactTitle": "Contact us",
+    "phone": "Phone",
+    "mobile": "Mobile",
+    "clientRelations": "Guest Relations",
+    "administration": "Administration",
+    "addressTitle": "Address & Access",
+    "addressNote1": "The suites are at n° 20, but",
+    "addressNote1Bold": "the entrance is through 22",
+    "addressNote1End": "(just to the right of the pharmacy)",
+    "addressNote2": "The area is pedestrian",
+    "addressNote3": "Located only 1 km from Colmar train station",
+    "checkinTitle": "Check-in",
+    "checkinTime": "From 5:00 PM",
+    "checkinNote1": "Access via keypad and key box",
+    "checkinNote2": "Telephone check-in required",
+    "checkinNote2End": "before your arrival",
+    "checkinNote3": "If your arrival time is not between 5:00 PM and 9:00 PM, contact us to arrange your access",
+    "checkoutTitle": "Check-out",
+    "checkoutTime": "Until 12:00 PM"
+  },
+  "addresses": {
+    "title": "Good Addresses",
+    "subtitle": "Our favorites in Colmar"
+  },
+  "reservation": {
+    "title": "Book",
+    "subtitle": "Best rate guaranteed direct",
+    "heading": "Your stay begins here",
+    "text": "For any request, please contact us directly. We respond within 24 hours.",
+    "emailBtn": "By Email",
+    "phoneBtn": "+33 (0)6 45 32 18 61"
+  },
+  "footer": {
+    "description": "An invitation to the Alsatian art of living, in an authentic and refined setting.",
+    "navigation": "Navigation",
+    "ourApartments": "Our Apartments",
+    "placeAccess": "The Place & Access",
+    "discoverColmar": "Discover Colmar",
+    "book": "Book",
+    "contact": "Contact"
+  }
+}

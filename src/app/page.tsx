@@ -4,8 +4,39 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Map from '@/components/Map';
+import Carousel from '@/components/Carousel';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
+  const { t } = useLanguage();
+
+  // Images pour le carrousel de Colmar
+  const colmarImages = [
+    '/images/colmar.jpg',
+    // Ajoutez d'autres images de Colmar ici
+    '/images/colmar2.jpg',
+    '/images/colmar3.jpg',
+    '/images/colmar4.jpg',
+    '/images/colmar5.jpg',
+    '/images/colmar6.jpg',
+    '/images/colmar7.jpg',
+    '/images/colmar8.jpg',
+    '/images/colmar9.jpg',
+    '/images/colmar10.jpg',
+    '/images/colmar11.jpg',
+    '/images/colmar12.jpg',
+    '/images/colmar13.jpg',
+    '/images/colmar14.jpg',
+
+  ];
+
+  // Images pour le carrousel des suites
+  const suitesImages = [
+    '/images/baudelaire.jpg',
+    '/images/schubert.jpg',
+    '/images/asselin1.jpg',
+  ];
+
   return (
     <div className="bg-cygne-cream">
 
@@ -16,7 +47,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative z-10 text-center px-6 max-w-6xl mx-auto text-cygne-brown"
+          className="relative z-10 text-center px-6 max-w-6xl mx-auto text-cygne-brown pt-20"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -24,7 +55,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-xs md:text-sm uppercase tracking-widest-xl mb-8 text-cygne-gold font-sans font-bold"
           >
-            Colmar — Alsace
+            {t('home.location')}
           </motion.p>
 
           <motion.h1
@@ -33,7 +64,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-6xl md:text-9xl font-serif mb-10 leading-[0.95] font-thin text-cygne-brown"
           >
-            Les Suites du Cygne
+            {t('home.title')}
           </motion.h1>
 
           <motion.p
@@ -42,7 +73,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             className="text-lg md:text-2xl font-light tracking-wide mb-16 max-w-2xl mx-auto opacity-90 leading-relaxed"
           >
-            L'art de vivre à l'alsacienne, revisité dans une atmosphère contemporaine et chaleureuse.
+            {t('home.subtitle')}
           </motion.p>
 
           <motion.div
@@ -55,7 +86,7 @@ export default function Home() {
               href="/appartements"
               className="group px-10 py-5 bg-cygne-brown text-white uppercase tracking-[0.2em] text-xs font-bold hover:bg-cygne-gold transition-all duration-500 rounded-sm relative overflow-hidden"
             >
-              <span className="relative z-10">Découvrir nos suites</span>
+              <span className="relative z-10">{t('home.cta')}</span>
               <span className="absolute inset-0 bg-cygne-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
             </Link>
           </motion.div>
@@ -88,31 +119,26 @@ export default function Home() {
             className="text-center mb-16"
           >
             <span className="text-cygne-gold text-xs uppercase tracking-widest-xl mb-4 block font-bold">
-              Notre Emplacement
+              {t('home.locationTitle')}
             </span>
             <h2 className="text-3xl md:text-5xl font-serif text-white font-light">
-              Au cœur de Colmar
+              {t('home.locationSubtitle')}
             </h2>
           </motion.div>
 
-          {/* Image avec bords et ombres */}
+          {/* Carrousel d'images de Colmar */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative w-full aspect-[4/3] rounded-sm overflow-hidden shadow-2xl border border-cygne-brown/10 group"
+            className="shadow-2xl border border-cygne-brown/10"
           >
-            <Image
-              src="/images/colmar.jpg"
-              alt="Colmar - La ville"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
-              sizes="(max-width: 768px) 100vw, 1200px"
-              priority
+            <Carousel
+              images={colmarImages}
+              autoplay={true}
+              interval={4000}
             />
-            {/* Overlay subtil pour la profondeur */}
-            <div className="absolute inset-0 bg-gradient-to-t from-cygne-brown/20 via-transparent to-transparent opacity-60" />
           </motion.div>
 
           {/* Légende sous l'image */}
@@ -123,7 +149,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-center mt-8 text-white/90 text-sm italic"
           >
-            À quelques pas de la Petite Venise et du centre historique
+            {t('home.locationCaption')}
           </motion.p>
         </div>
       </section>
@@ -138,7 +164,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-cygne-gold text-xs uppercase tracking-widest-xl mb-6 block font-bold"
           >
-            Notre Philosophie
+            {t('home.philosophyLabel')}
           </motion.span>
 
           <motion.h2
@@ -148,7 +174,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl md:text-6xl font-serif text-cygne-brown mb-12 leading-tight font-light"
           >
-            Une maison de famille, <br /> une âme d'artiste.
+            {t('home.philosophyTitle')}
           </motion.h2>
 
           <motion.div
@@ -166,8 +192,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-cygne-brown/80 text-lg md:text-xl leading-loose font-light mb-10 max-w-2xl mx-auto"
           >
-            Nichée aux portes de la vieille ville, notre demeure alsacienne a été entièrement repensée pour vous offrir un refuge de sérénité.
-            Loin des hébergements standardisés, nous vous proposons de véritables espaces de vie (jusqu'à 115m²), où le charme de l'ancien côtoie le confort absolu.
+            {t('home.philosophyText')}
           </motion.p>
 
           <motion.div
@@ -180,7 +205,7 @@ export default function Home() {
               href="/infos"
               className="group inline-block text-cygne-brown border-b border-cygne-brown/30 pb-1 hover:text-cygne-gold hover:border-cygne-gold transition-all duration-400 uppercase tracking-widest text-xs"
             >
-              En savoir plus sur la maison
+              {t('home.philosophyLink')}
               <span className="inline-block ml-2 group-hover:translate-x-2 transition-transform duration-400">→</span>
             </Link>
           </motion.div>
@@ -204,7 +229,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-5xl md:text-6xl font-serif mb-8 font-light"
           >
-            Nos Suites
+            {t('home.suitesTitle')}
           </motion.h3>
 
           <motion.p
@@ -214,7 +239,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mb-12 max-w-sm font-light leading-loose text-white/90 text-lg"
           >
-            De la poésie de la suite Baudelaire à la grandeur de la suite Asselin. Des espaces uniques pour 2 à 10 personnes.
+            {t('home.suitesText')}
           </motion.p>
 
           <motion.div
@@ -227,27 +252,64 @@ export default function Home() {
               href="/appartements"
               className="group inline-block px-10 py-4 border border-white/40 hover:bg-white hover:text-cygne-brown transition-all duration-500 uppercase tracking-widest text-xs relative overflow-hidden"
             >
-              <span className="relative z-10">Voir les appartements</span>
+              <span className="relative z-10">{t('home.suitesLink')}</span>
             </Link>
           </motion.div>
         </motion.div>
 
-        {/* Colonne Droite : Image intérieur */}
+        {/* Colonne Droite : Carrousel des suites */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="bg-stone-200 relative min-h-[450px] md:min-h-[650px] overflow-hidden group"
+          className="bg-stone-200 relative min-h-[450px] md:min-h-[650px]"
         >
-          <Image
-            src="/images/baudelaire.jpg"
-            alt="Intérieur des suites"
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-700"
-            sizes="(max-width: 768px) 100vw, 50vw"
+          <Carousel
+            images={suitesImages}
+            autoplay={true}
+            interval={5000}
+            className="h-full"
+            aspectRatio="aspect-auto min-h-[450px] md:min-h-[650px]"
           />
         </motion.div>
+      </section>
+
+      {/* SECTION CTA RESERVATION */}
+      <section className="py-20 px-6 bg-cygne-gold">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-serif text-white mb-6 font-light"
+          >
+            {t('home.title')}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-white/90 text-lg mb-10 max-w-2xl mx-auto"
+          >
+            {t('home.ctaReservation')}
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link
+              href="/reservation"
+              className="inline-block px-12 py-5 bg-white text-cygne-brown uppercase tracking-[0.2em] text-sm font-bold hover:bg-cygne-brown hover:text-white transition-all duration-500 rounded-sm shadow-lg"
+            >
+              {t('home.ctaButton')}
+            </Link>
+          </motion.div>
+        </div>
       </section>
 
       {/* SECTION LOCALISATION AVEC CARTE */}
@@ -261,14 +323,14 @@ export default function Home() {
             className="text-center mb-12"
           >
             <span className="text-cygne-gold text-xs uppercase tracking-widest-xl mb-4 block font-bold">
-              Localisation
+              {t('home.mapLabel')}
             </span>
             <h2 className="text-3xl md:text-5xl font-serif text-cygne-brown font-light mb-6">
-              Comment nous trouver
+              {t('home.mapTitle')}
             </h2>
             <p className="text-cygne-brown/70 text-lg max-w-2xl mx-auto">
-              20-22 Rue des Boulangers, 68000 Colmar<br />
-              <span className="text-sm">À quelques minutes à pied du centre historique</span>
+              {t('home.mapAddress')}<br />
+              <span className="text-sm">{t('home.mapSubtitle')}</span>
             </p>
           </motion.div>
 
