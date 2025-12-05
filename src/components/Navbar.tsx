@@ -49,7 +49,7 @@ export default function Navbar() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        
+
         {/* Logo */}
         <Link
           href="/"

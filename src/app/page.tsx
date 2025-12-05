@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Map from '@/components/Map';
 import Carousel from '@/components/Carousel';
+import BestPriceWidget from '@/components/BestPriceWidget';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
@@ -212,6 +213,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Widget Meilleur Tarif Reservit */}
+      <BestPriceWidget />
+
       {/* SECTION APERCU */}
       <section className="grid md:grid-cols-2 min-h-[650px]">
         {/* Colonne Gauche : Marron pour casser le rythme */}
@@ -302,12 +306,12 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link
-              href="/reservation"
+            <a
+              href="https://secure.reservit.com/engine/booking/2/254654/dates?langcode=FR"
               className="inline-block px-12 py-5 bg-white text-cygne-brown uppercase tracking-[0.2em] text-sm font-bold hover:bg-cygne-brown hover:text-white transition-all duration-500 rounded-sm shadow-lg"
             >
               {t('home.ctaButton')}
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>

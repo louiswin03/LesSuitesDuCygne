@@ -106,12 +106,12 @@ export default function SuiteCard({ suite }: SuiteCardProps) {
             </ul>
         </div>
 
-        <Link
-          href="/reservation"
+        <a
+          href="https://secure.reservit.com/engine/booking/2/254654/dates?langcode=FR"
           className="btn-outline w-full block text-center mx-auto"
         >
           {t('apartments.seeAvailability')}
-        </Link>
+        </a>
       </div>
     </div>
   );
