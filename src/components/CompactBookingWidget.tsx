@@ -101,13 +101,13 @@ export default function CompactBookingWidget() {
 
       {/* Widget de réservation compact */}
       <div className="compact-booking-wrapper relative bg-white rounded-lg overflow-hidden shadow-xl" ref={wrapperRef}>
-        {/* Bouton plein écran - Étendu pour masquer le titre Reservit */}
+        {/* Bouton plein écran - Étendu pour masquer le titre Reservit - Caché sur mobile */}
         <button
           onClick={toggleFullscreen}
-          className={`absolute top-0 z-40 px-4 bg-cygne-gold text-white text-xs uppercase tracking-wider font-bold hover:bg-cygne-brown transition-all duration-300 shadow-lg flex items-center justify-center gap-2 ${
+          className={`absolute top-0 z-40 px-4 bg-cygne-gold text-white text-xs uppercase tracking-wider font-bold hover:bg-cygne-brown transition-all duration-300 shadow-lg hidden md:flex items-center justify-center gap-2 ${
             isFullscreen
-              ? 'left-0 right-20 md:right-56 py-[1.7rem] md:py-[1.69rem]'
-              : 'left-[0px] right-16 md:right-44 py-[0.7rem] md:py-[1.375rem]'
+              ? 'left-0 right-56 py-[1.69rem]'
+              : 'left-[0px] right-44 py-[1.375rem]'
           }`}
         >
           <svg
