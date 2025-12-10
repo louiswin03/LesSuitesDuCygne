@@ -18,6 +18,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Bloquer le scroll quand le menu mobile est ouvert
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.height = '100vh';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [isOpen]);
+
   const links = [
     { name: t('nav.apartments'), href: '/appartements' },
     { name: t('nav.place'), href: '/infos' },
@@ -134,9 +155,9 @@ export default function Navbar() {
         </button>
 
         {/* Mobile Menu Fullscreen */}
-        <div className={`fixed inset-0 bg-cygne-cream flex flex-col items-center justify-center gap-8 transition-transform duration-500 ease-in-out md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className={`fixed inset-0 bg-cygne-cream flex flex-col items-center justify-center gap-4 transition-transform duration-500 ease-in-out md:hidden z-40 overflow-hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             {/* Language Selector Mobile */}
-            <div className="flex gap-3 mb-4">
+            <div className="flex gap-3">
               <button
                 onClick={() => setLanguage('fr')}
                 className={`text-sm font-bold uppercase tracking-wider transition-colors ${
@@ -184,7 +205,7 @@ export default function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="px-8 py-4 bg-cygne-gold text-white text-xl font-serif hover:bg-cygne-brown transition-all duration-300 rounded-sm"
+                      className="px-8 py-3 bg-cygne-gold text-white text-lg font-serif hover:bg-cygne-brown transition-all duration-300 rounded-sm"
                   >
                       {link.name}
                   </Link>
@@ -196,7 +217,7 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-2xl font-serif transition-colors ${
+                    className={`text-xl font-serif transition-colors ${
                       isActive
                         ? 'text-cygne-gold'
                         : 'text-cygne-brown'
